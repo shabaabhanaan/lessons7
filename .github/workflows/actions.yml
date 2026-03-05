@@ -5,64 +5,64 @@ on:
     branches:
       - main
       - develop
-
   pull_request:
     branches:
       - main
 
 jobs:
-   job1:
-     name: Install Dependencies
-     runs-on: ubuntu-latest
 
-     steps:
-       - name: Checkout Repository
-         uses: actions/checkout@v4
+  job1:
+    name: Install Dependencies
+    runs-on: ubuntu-latest
 
-       - name: Setup Node.js
-         uses: actions/setup-node@v4
-         with:
-            node-version: '18'
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
 
-         name: Install Dependencies
-         run: npm install
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
 
-    job2:
-      name: Run Tests
-      runs-on: ubuntu-latest
+      - name: Install Dependencies
+        run: npm install
 
-      steps:
-         - name: Checkout Repository
-           uses: actions/checkout@v4
 
-         - name: Setup Node.js
-           uses: actions/setup-node@v4
+  job2:
+    name: Run Tests
+    runs-on: ubuntu-latest
 
-           with:
-             node-version: '18'
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
 
-          - name: Install Dependencies
-            run: npm install
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
 
-          - name: Run Tests
-            run: npm tests
+      - name: Install Dependencies
+        run: npm install
 
-      job3:
-         name: Build Project
-         runs-on: ubuntu-latest
+      - name: Run Tests
+        run: npm test
 
-         steps:
-          - name: Checkout Repository
-            uses: actions/checkout@v4
 
-          - name: Setup Node.js
-            uses: actions/setup-node@v4
+  job3:
+    name: Build Project
+    runs-on: ubuntu-latest
 
-            with:
-              node-version: '18'
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
 
-          - name: Install Dependencies
-            run: npm install
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
 
-          - name: Build Project
-            run: npm run build
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Build Project
+        run: npm run build
